@@ -1,0 +1,51 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    background-color: bisque;
+    width: 16rem;
+    height: fit-content;
+    gap: .8rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    border-radius: 10px;
+  }
+  
+  .card img {
+    margin-top: -20%;
+    width: 100%;
+    border-radius: 20px;
+  }
+  
+  .card h4 {
+    margin: 0;
+    margin-top: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    white-space: normal; 
+  }
+  
+  .card p {
+    margin: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    max-height: 6rem; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card .btnn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .card .badge-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
