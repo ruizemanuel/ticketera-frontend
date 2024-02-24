@@ -9,27 +9,14 @@ function Card({ data }) {
 
   const getBadgeVariant = () => {
     switch (difficultyLevel) {
-      case 'easy':
+      case 'facil':
         return 'success';
-      case 'medium':
+      case 'media':
         return 'warning';
-      case 'hard':
+      case 'dificil':
         return 'danger';
       default:
         return 'primary';
-    }
-  };
-
-  const getBadgeText = () => {
-    switch (difficultyLevel) {
-      case 'easy':
-        return 'FACIL';
-      case 'medium':
-        return 'MEDIO';
-      case 'hard':
-        return 'DIFICIL';
-      default:
-        return 'FACIL';
     }
   };
 
@@ -48,7 +35,7 @@ function Card({ data }) {
     >
       <img src={gifUrl} alt="" />
       <div className="badge-container">
-      <Badge bg={getBadgeVariant()}>{getBadgeText()}</Badge>
+      <Badge bg={getBadgeVariant()}>{difficultyLevel.toUpperCase()}</Badge>
       <Badge bg={isDone ? 'success' : 'secondary'}>{isDone ? 'FINALIZADA' : 'PENDIENTE'}</Badge>
       </div>
       <h4>{title}</h4>

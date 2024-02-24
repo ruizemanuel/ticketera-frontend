@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import Card from "../Card/Card";
 
@@ -10,15 +10,15 @@ const Home = () => {
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
         gridRowGap: "80px",
-        gridColumnGap: "40px", 
+        gridColumnGap: "40px",
         maxWidth: "900px",
         margin: "0 auto 30px"
     };
 
     return (
         <div>
-            <Container className="py-5">
-                <Row style={cardsLayout}> 
+            <Container className="py-5" style={{ position: "relative" }}>
+                <Row style={cardsLayout}>
                     {tickets.map((item, index) => (
                         <Col key={index} xs={12} sm={6} md={4} lg={3}>
                             <Card data={item} />

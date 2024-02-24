@@ -7,7 +7,9 @@ export const appSlice = createSlice({
     status: null,
     message: null,
     loading: false,
+    loadingGif: false,
     data: null,
+    gifs: null,
     dataToEdit: null,
   },
 
@@ -24,19 +26,27 @@ export const appSlice = createSlice({
       state.dataToEdit = null
     },
 
+    loadingGif: (state) => {
+      state.loadingGif = true
+    },
+
     error: (state, { payload }) => {
         state.loading = false
+        state.loadingGif = false
         state.message = payload?.message || 'Ocurrio un error'
         state.status = "error"
         state.data = payload?.data || null
+        state.gifs = payload?.gifs || null
         state.dataToEdit = null
     },
 
     success: (state, { payload }) => {
         state.loading = false
+        state.loadingGif = false
         state.message = payload.message || null
         state.status = "success"
         state.data = payload.data || null
+        state.gifs = payload.gifs || null
         state.dataToEdit = payload.dataToEdit || null
     },
   },
@@ -44,6 +54,7 @@ export const appSlice = createSlice({
 
 export const {
   loading,
+  loadingGif,
   error,
   success,
   flushEdit,
