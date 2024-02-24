@@ -1,11 +1,22 @@
 import { loading, success, error, loadingGif } from "../data/redux/appSlice"
-import { createNewDataRepo, getDataByIdRepo, getDataRepo, getGifsRepo, updateDataRepo } from "../data/repositories"
+import { createNewDataRepo, getDataByIdRepo, getDataFilteredRepo, getDataRepo, getGifsRepo, updateDataRepo } from "../data/repositories"
 
 
 export const getData = () => async (dispatch) => {
     dispatch(loading())
     try {
         const { data } = await getDataRepo()
+        dispatch(success({ data }))
+    } catch (e) {
+        const { message } = e.response.data
+        dispatch(error({ message: message || 'Ocurrio un error' }))
+    }
+}
+
+export const getDataFiltered = (params) => async (dispatch) => {
+    dispatch(loading())
+    try {
+        const { data } = await getDataFilteredRepo(params)
         dispatch(success({ data }))
     } catch (e) {
         const { message } = e.response.data

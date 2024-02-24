@@ -12,6 +12,17 @@ export const getDataRepo = async () => {
     }
 }
 
+export const getDataFilteredRepo = async (params) => {
+    try {
+        const { data } = await axios.get('', {params});
+          console.log(data)
+        return data
+    } catch (error) {
+        console.log('error', data)
+        throw error
+    }
+}
+
 export const createNewDataRepo = async (formValues) => {
     try {
         const { data } = await axios.post('', formValues, config());
