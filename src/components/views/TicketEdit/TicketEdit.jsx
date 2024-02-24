@@ -8,7 +8,7 @@ import {
     validateDifficulty,
     validateTitle
 } from "../../../helpers/validateFields";
-import { createNewData, getDataToEdit, getGifs, updateData } from "../../../share/domain/appServices";
+import { getDataToEdit, getGifs, updateData } from "../../../share/domain/appServices";
 import Loader from "../../layouts/Loader";
 
 const TicketEdit = () => {
