@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomeContainer from './components/home/HomeContainer';
 import Navigation from './components/layouts/Navigation';
 import TicketCreate from './components/views/TicketCreate/TicketCreate';
+import TicketEdit from './components/views/TicketEdit/TicketEdit';
 
 function App() {
 
@@ -21,6 +22,11 @@ function App() {
           exact
           path="/ticket/create"
           element={<TicketCreate />}
+        />
+        <Route
+          exact
+          path="/ticket/edit/:id"
+          element={<TicketEdit/>}
         />
       </Routes>
     </BrowserRouter>

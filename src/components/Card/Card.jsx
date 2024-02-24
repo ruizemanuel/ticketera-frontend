@@ -1,11 +1,13 @@
 import "./Card.css";
 import React, { useState } from "react";
 import { Badge } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { useSpring, animated } from "react-spring";
 
 function Card({ data }) {
-  const { title, description, gifUrl, isDone, difficultyLevel } = data;
+  const { id, title, description, gifUrl, isDone, difficultyLevel } = data;
   const [show, setShown] = useState(false);
+  const navigate = useNavigate();
 
   const getBadgeVariant = () => {
     switch (difficultyLevel) {
@@ -35,14 +37,18 @@ function Card({ data }) {
     >
       <img src={gifUrl} alt="" />
       <div className="badge-container">
-      <Badge bg={getBadgeVariant()}>{difficultyLevel.toUpperCase()}</Badge>
-      <Badge bg={isDone ? 'success' : 'secondary'}>{isDone ? 'FINALIZADA' : 'PENDIENTE'}</Badge>
+        <Badge bg={getBadgeVariant()}>{difficultyLevel.toUpperCase()}</Badge>
+        <Badge bg={isDone ? 'success' : 'secondary'}>{isDone ? 'FINALIZADO' : 'PENDIENTE'}</Badge>
       </div>
       <h4>{title}</h4>
       <p>
         {description}
       </p>
-      <button className="btn btn-primary mx-2">VER DETALLE</button>
+      <button
+        className="btn btn-primary mx-2"
+        onClick={() => navigate(`/ticket/edit/${id}`)}
+      >
+        VER DETALLE</button>
     </animated.div>
   );
 }

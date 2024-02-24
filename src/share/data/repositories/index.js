@@ -21,6 +21,24 @@ export const createNewDataRepo = async (formValues) => {
     }
 }
 
+export const updateDataRepo = async (formValues, id) => {
+    try {
+        const { data } = await axios.put(`${id}`, formValues, config());
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+
+export const getDataByIdRepo = async (id) => {
+    try {
+        const { data } = await axios.get(`${id}`)
+        return data
+    } catch (error) {
+        throw error
+    }
+}
+
 export const getGifsRepo = async (category) => {
     try {
         const { data } = await axiosGiphy.get('',{
