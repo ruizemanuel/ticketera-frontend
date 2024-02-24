@@ -38,7 +38,6 @@ export const getGifs = (category) => async (dispatch, getState) => {
         } )
         dispatch(success({ gifs, dataToEdit }))
     } catch (e) {
-        console.log(e);
         const { message } = e.response.data
         dispatch(error({ message: message || 'Ocurrio un error' }))
     }

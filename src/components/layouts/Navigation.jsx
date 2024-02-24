@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Dropdown, DropdownButton, Form, Nav, Navbar } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Container, Dropdown, DropdownButton, Nav, Navbar } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 import { getData, getDataFiltered } from "../../share/domain/appServices";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import CustomDatePicker from "../DatePicker/DatePicker";
 
 
@@ -13,6 +11,7 @@ const Navigation = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const [activeFilter, setActiveFilter] = useState(null);
+    const { data: tickets } = useSelector(state => state.app);
 
     const handleFilterChange = (filterType, filterValue) => {
         const name = filterValue.split('=')[0]
@@ -57,7 +56,7 @@ const Navigation = () => {
 
     const resetFilters = () => {
         setActiveFilter(null);
-        dispatch(getData()); // Restablecer a la vista sin filtros
+        dispatch(getData());
     };
 
     return (
@@ -67,44 +66,46 @@ const Navigation = () => {
                     <Navbar.Brand className="logo" href="/">
                         <h1>Ticketera</h1>
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    {location.pathname !== "/ticket/create" && (<Navbar.Toggle aria-controls="basic-navbar-nav" />)}
                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ms-auto color-nav" style={{ width: activeFilter ? '50%' : '40%' }}>
+                        <Nav className="ms-auto color-nav flex-container">
+                            {location.pathname === "/" && (
+                                <div className="flex-container">
+                                    <CustomDatePicker onDateChange={filterTicketsByDate} />
+                                    <Container className="text-center">
+                                        <DropdownButton id="dropdown-basic-button" title="Filtros">
+                                            <DropdownButton
+                                                id={"dropdown-button-estado"}
+                                                drop="end"
+                                                variant="light"
+                                                title={"Estado"}
+                                            >
+                                                <Dropdown.Item onClick={() => handleFilterChange('estado', 'isDone[eq]=1')}>Finalizados</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleFilterChange('estado', 'isDone[eq]=0')}>Pendientes</Dropdown.Item>
+                                            </DropdownButton>
 
-                            <CustomDatePicker onDateChange={filterTicketsByDate} />
-                            <div>
-                                <Container>
-                                    <DropdownButton id="dropdown-basic-button" title="Filtros">
-                                        <DropdownButton
-                                            id={"dropdown-button-estado"}
-                                            drop="end"
-                                            variant="light"
-                                            title={"Estado"}
-                                        >
-                                            <Dropdown.Item onClick={() => handleFilterChange('estado', 'isDone[eq]=1')}>Finalizados</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => handleFilterChange('estado', 'isDone[eq]=0')}>Pendientes</Dropdown.Item>
+                                            <DropdownButton
+                                                id={"dropdown-button-difficulty"}
+                                                drop="end"
+                                                variant="light"
+                                                title="Dificulad"
+                                            >
+                                                <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=facil')}>Fácil</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=media')}>Media</Dropdown.Item>
+                                                <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=dificil')}>Difícil</Dropdown.Item>
+                                            </DropdownButton>
                                         </DropdownButton>
+                                    </Container>
 
-                                        <DropdownButton
-                                            id={"dropdown-button-difficulty"}
-                                            drop="end"
-                                            variant="light"
-                                            title="Dificulad"
-                                        >
-                                            <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=facil')}>Fácil</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=media')}>Media</Dropdown.Item>
-                                            <Dropdown.Item onClick={() => handleFilterChange('dificultad', 'difficultyLevel[eq]=dificil')}>Difícil</Dropdown.Item>
-                                        </DropdownButton>
-                                    </DropdownButton>
-                                </Container>
-                            </div>
-                            {activeFilter && (
-                                <button className="btn btn-secondary" onClick={resetFilters} style={{ marginRight: '10px' }}>
-                                    Restablecer
-                                </button>
+                                    {activeFilter && (
+                                        <button className="btn btn-secondary" onClick={resetFilters} style={{ marginRight: '10px' }}>
+                                            Restablecer
+                                        </button>
+                                    )}
+                                </div>
                             )}
                             {location.pathname !== "/ticket/create" && (
-                                <Link className="btn btn-primary" style={{ width: '30%', height: '50%' }} to="/ticket/create">
+                                <Link className="btn btn-primary text-center col-3 col-lg-auto ms-auto me-auto" to="/ticket/create">
                                     Crear Ticket
                                 </Link>
                             )}
