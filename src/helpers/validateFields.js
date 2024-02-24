@@ -1,5 +1,5 @@
-const regexTitle = /^[A-Za-z\s?]+$/;
-const regexDescription = /^[a-zA-Z.,\s]+$/;
+const regexTitle = /^[A-Za-zñÑ\s?]+$/;
+const regexDescription = /^[a-zA-ZñÑ.,\s]+$/;
 const regexUrl = /^https?:\/\/[\w]+(\.[\w]+)+[/#?]?.*$/;
 const regexDifficulty = /^[A-Za-z\-\s?]+$/;
 
@@ -38,7 +38,7 @@ export const validateDifficulty = (field) => {
   ) {
     return 'ok';
   } else {
-    return 'Debes seleccionar una categoria';
+    return 'Debes seleccionar un nivel de dificultad';
   }
 };
 

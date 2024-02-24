@@ -107,6 +107,7 @@ const TicketCreate = () => {
               value={inputs.title || ""}
               onChange={(e) => handleChange(e)}
               required
+              minLength={5}
               maxLength={50}
             />
           </Form.Group>
@@ -120,6 +121,7 @@ const TicketCreate = () => {
               value={inputs.description || ""}
               onChange={(e) => handleChange(e)}
               required
+              minLength={10}
               maxLength={200}
               style={{ resize: "none" }}
             />

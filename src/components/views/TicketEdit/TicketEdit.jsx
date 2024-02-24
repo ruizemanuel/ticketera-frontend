@@ -16,7 +16,13 @@ const TicketEdit = () => {
     const { pathname } = useLocation();
     const id = pathname.split('/')[3];
 
-    const [inputs, setInputs] = useState({});
+    const [inputs, setInputs] = useState({
+        title: "",
+        description: "",
+        difficultyLevel: "",
+        gifUrl: "",
+        isDone: 0,
+    });
     const [spinner, setSpinnner] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [show, setShow] = useState(false);
@@ -36,7 +42,7 @@ const TicketEdit = () => {
                 description: ticket.description || "",
                 difficultyLevel: ticket.difficultyLevel || "",
                 gifUrl: ticket.gifUrl || "",
-                isDone: ticket.isDone || "",
+                isDone: ticket.isDone || 0,
             });
         }
     }, [ticket]);
@@ -56,7 +62,7 @@ const TicketEdit = () => {
             dificil: () => dispatch(getGifs('dificil')),
         };
 
-        const selectedDifficulty = inputs.difficultyLevel;
+        const selectedDifficulty = event.target.value;
 
         if (selectedDifficulty && difficultyConditions[selectedDifficulty]) {
             setInputs((values) => ({ ...values, gifUrl: '' }));
@@ -92,7 +98,7 @@ const TicketEdit = () => {
             gifUrl: inputs.gifUrl,
             isDone: inputs.isDone,
         };
-
+        
         Swal.fire({
             title: "¿Estas seguro?",
             text: "No podrás revertir los cambios!",
@@ -128,6 +134,7 @@ const TicketEdit = () => {
                             value={inputs.title || ""}
                             onChange={(e) => handleChange(e)}
                             required
+                            minLength={5}
                             maxLength={50}
                         />
                     </Form.Group>
@@ -141,6 +148,7 @@ const TicketEdit = () => {
                             value={inputs.description || ""}
                             onChange={(e) => handleChange(e)}
                             required
+                            minLength={10}
                             maxLength={200}
                             style={{ resize: "none" }} 
                         />
