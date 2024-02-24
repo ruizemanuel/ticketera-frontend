@@ -54,21 +54,21 @@ const TicketEdit = () => {
             facil: () => dispatch(getGifs('easy')),
             media: () => dispatch(getGifs('so so')),
             dificil: () => dispatch(getGifs('dificil')),
-          };
-      
-          const selectedDifficulty = inputs.difficultyLevel;
-      
-          if (selectedDifficulty && difficultyConditions[selectedDifficulty]) {
+        };
+
+        const selectedDifficulty = inputs.difficultyLevel;
+
+        if (selectedDifficulty && difficultyConditions[selectedDifficulty]) {
             setInputs((values) => ({ ...values, gifUrl: '' }));
             difficultyConditions[selectedDifficulty]();
-          }
+        }
     };
 
     useEffect(() => {
         if (gifs && gifs.length > 0) {
-          setInputs((values) => ({ ...values, gifUrl: gifs[Math.floor(Math.random() * gifs.length)].url }));
+            setInputs((values) => ({ ...values, gifUrl: gifs[Math.floor(Math.random() * gifs.length)].url }));
         }
-      }, [gifs]);
+    }, [gifs]);
 
 
     const handleSubmit = (e) => {
@@ -114,7 +114,7 @@ const TicketEdit = () => {
     };
 
     return (
-        loading ? (<Loader/>) : <div>
+        loading ? (<Loader />) : <div>
             <Container className="py-5">
                 <h2>Modificar Ticket</h2>
                 <hr />
@@ -134,13 +134,15 @@ const TicketEdit = () => {
                     <Form.Group className="mb-3" controlId="formBasicDescription">
                         <Form.Label>Descripción*</Form.Label>
                         <Form.Control
-                            type="text"
+                            as="textarea"
+                            rows={3}
                             placeholder="Inserte la descripción del ticket"
                             name="description"
                             value={inputs.description || ""}
                             onChange={(e) => handleChange(e)}
                             required
                             maxLength={200}
+                            style={{ resize: "none" }} 
                         />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicDropdown">

@@ -113,13 +113,15 @@ const TicketCreate = () => {
           <Form.Group className="mb-3" controlId="formBasicDescription">
             <Form.Label>Descripción*</Form.Label>
             <Form.Control
-              type="text"
+              as="textarea"
+              rows={3}
               placeholder="Inserte la descripción del ticket"
               name="description"
               value={inputs.description || ""}
               onChange={(e) => handleChange(e)}
               required
               maxLength={200}
+              style={{ resize: "none" }}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicDropdown">

@@ -11,14 +11,18 @@ const Home = () => {
         fontSize: "1.5rem"
     };
 
+    const sortedTickets = tickets && tickets.length > 0
+    ? [...tickets].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    : null;
+
     return (
         <div>
             <Container className="py-5">
-                {tickets.length === 0 ? (
+                {sortedTickets.length === 0 ? (
                     <p style={messageStyle}>No hay tickets disponibles.</p>
                 ) : (
                     <div className="cards-layout">
-                        {tickets.map((item, index) => (
+                        {sortedTickets.map((item, index) => (
                             <Col key={index} xs={12} sm={6} md={4} lg={3}>
                                 <Card data={item} />
                             </Col>
