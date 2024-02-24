@@ -1,5 +1,8 @@
 .wider-input .react-datepicker__input-container input {
-    width: 220px;
+    width: 250px;
+    height: 38px;
+    border-radius: 5px;
+    border: 1px solid grey;
   }
 
   .flex-container {
@@ -12,4 +15,14 @@
     align-items: center;
     gap: 10px;
 }
+}
+
+.cards-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, max-content));
+  row-gap: 80px;
+  column-gap: 60px;
+  max-width: 900px;
+  margin: 0 auto;
+  justify-content: center;
 }
