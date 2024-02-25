@@ -51,7 +51,7 @@ export const getDataByIdRepo = async (id) => {
 export const getGifsRepo = async (category) => {
     try {
         const { data } = await axiosGiphy.get('',{
-            params:{q: category, limit: 20}
+            params:{q: category, limit: 30}
         });
         return data
     } catch (error) {

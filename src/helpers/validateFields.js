@@ -1,5 +1,5 @@
-const regexTitle = /^[A-Za-zñÑ\s?]+$/;
-const regexDescription = /^[a-zA-ZñÑ.,\s]+$/;
+const regexTitle = /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s?]+$/;
+const regexDescription = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\d.,\s]+$/;
 const regexUrl = /^https?:\/\/[\w]+(\.[\w]+)+[/#?]?.*$/;
 const regexDifficulty = /^[A-Za-z\-\s?]+$/;
 
@@ -16,7 +16,7 @@ export const validateDescription = (field) => {
   if (regexDescription.test(field) && field.trim() !== "") {
     return 'ok';
   } else {
-    return 'El campo descripcion solo puede contener letras, puntos y comas';
+    return 'El campo descripcion solo puede contener letras, números, puntos y comas';
   }
 };
 

@@ -12,7 +12,8 @@
   
   .card img {
     margin-top: -20%;
-    width: 100%;
+    width: 200px;
+    height: 200px;
     border-radius: 20px;
   }
   
@@ -28,10 +29,12 @@
   
   .card p {
     margin: 0;
+    overflow: hidden;
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
-    max-height: 6rem; 
-    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; 
     text-overflow: ellipsis;
   }
 

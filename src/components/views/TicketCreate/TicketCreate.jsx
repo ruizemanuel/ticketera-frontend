@@ -61,8 +61,8 @@ const TicketCreate = () => {
     }
 
     const newTicket = {
-      title: inputs.title,
-      description: inputs.description,
+      title: inputs.title.trim(),
+      description: inputs.description.trim(),
       difficultyLevel: inputs.difficultyLevel,
       gifUrl: inputs.gifUrl,
       isDone: false
