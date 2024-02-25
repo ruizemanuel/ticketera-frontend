@@ -110,7 +110,7 @@ const Navigation = () => {
 
                                     {activeFilter && (
                                         <button className="btn btn-secondary" onClick={resetFilters} style={{ marginRight: '10px' }}>
-                                            Restablecer
+                                            Restaurar
                                         </button>
                                     )}
                                 </div>
