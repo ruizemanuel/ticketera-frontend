@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container, Form, Image } from "react-bootstrap";
+import { Container, Form, Image } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,9 +23,6 @@ const TicketEdit = () => {
         gifUrl: "",
         isDone: 0,
     });
-    const [spinner, setSpinnner] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
-    const [show, setShow] = useState(false);
     const { loading, loadingGif, dataToEdit: ticket, gifs } = useSelector(state => state.app);
     const dispatch = useDispatch();
 
@@ -190,7 +187,7 @@ const TicketEdit = () => {
                         )}
                     </Form.Group>
 
-                    {loading ? (
+                    {loading || loadingGif ? (
 
                         <div className="text-end">
                             <button className="btn btn-primary text-light" type="button" disabled>
@@ -207,16 +204,6 @@ const TicketEdit = () => {
 
                     )}
                 </Form>
-                {show && (
-                    <Alert
-                        key={errorMessage}
-                        variant="danger"
-                        onClose={() => setShow(false)}
-                        dismissible
-                    >
-                        {errorMessage}
-                    </Alert>
-                )}
             </Container>
         </div>
     );

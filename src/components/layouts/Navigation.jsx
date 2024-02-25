@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Dropdown, DropdownButton, Nav, Navbar } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { getData, getDataFiltered } from "../../share/domain/appServices";
 import CustomDatePicker from "../DatePicker/DatePicker";
+import { flushGifs, flushMessage } from "../../share/data/redux/appSlice";
 
 
 const Navigation = () => {
@@ -11,7 +12,7 @@ const Navigation = () => {
     const location = useLocation();
     const dispatch = useDispatch();
     const [activeFilter, setActiveFilter] = useState(null);
-    const { data: tickets } = useSelector(state => state.app);
+    const navigate = useNavigate();
 
     const handleFilterChange = (filterType, filterValue) => {
         const name = filterValue.split('=')[0]
@@ -59,11 +60,21 @@ const Navigation = () => {
         dispatch(getData());
     };
 
+    const handleClick = () => {
+        dispatch(flushGifs());
+        navigate("/ticket/create")
+    }
+
+    const handleBrandClick = () => {
+        dispatch(flushMessage());
+        navigate("/");
+    };
+
     return (
         <div>
             <Navbar className="bg-light" expand="lg">
                 <Container>
-                    <Navbar.Brand className="logo" href="/">
+                    <Navbar.Brand style={{cursor: 'pointer'}} onClick={handleBrandClick}>
                         <h1>Ticketera</h1>
                     </Navbar.Brand>
                     {location.pathname !== "/ticket/create" && (<Navbar.Toggle aria-controls="basic-navbar-nav" />)}
@@ -105,9 +116,9 @@ const Navigation = () => {
                                 </div>
                             )}
                             {location.pathname !== "/ticket/create" && (
-                                <Link className="btn btn-primary text-center col-3 col-lg-auto ms-auto me-auto" to="/ticket/create">
+                                <button className="btn btn-primary text-center col-3 col-lg-auto ms-auto me-auto" onClick={() => handleClick()}>
                                     Crear Ticket
-                                </Link>
+                                </button>
                             )}
                         </Nav>
                     </Navbar.Collapse>

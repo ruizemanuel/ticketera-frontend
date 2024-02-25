@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Container, Form, Image } from "react-bootstrap";
+import { Container, Form, Image } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,11 +12,7 @@ import { createNewData, getGifs } from "../../../share/domain/appServices";
 
 const TicketCreate = () => {
 
-
   const [inputs, setInputs] = useState({});
-  const [spinner, setSpinnner] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [show, setShow] = useState(false);
   const { loading, loadingGif, gifs } = useSelector(state => state.app);
   const dispatch = useDispatch();
 
@@ -153,7 +149,7 @@ const TicketCreate = () => {
           </Form.Group>
 
 
-          {loading ? (
+          {loading || loadingGif ? (
 
             <div className="text-end">
               <button className="btn btn-primary text-light" type="button" disabled>
@@ -170,16 +166,6 @@ const TicketCreate = () => {
 
           )}
         </Form>
-        {show && (
-          <Alert
-            key={errorMessage}
-            variant="danger"
-            onClose={() => setShow(false)}
-            dismissible
-          >
-            {errorMessage}
-          </Alert>
-        )}
       </Container>
     </div>
   );
