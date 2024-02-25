@@ -37,6 +37,7 @@ https://github.com/ruizemanuel/ticketera-backend/blob/emanuel-ruiz/README.md
 2. Abre Visual Studio Code y abre la carpeta del proyecto frontend de la Ticketera.
 3. Crear un archivo llamado .env en la raiz del proyecto con estos datos:
 `VITE_REACT_APP_API_TICKETS=http://localhost:8000/api/v1/tickets`
+
 VITE_REACT_APP_API_KEY_GIPHY=*Tu API KEY personal de Giphy (puedes generarla [aqui](https://developers.giphy.com/))*
 4. Abre una terminal en Visual Studio Code o utiliza tu terminal preferida.
 5. Instala las dependencias utilizando npm:
