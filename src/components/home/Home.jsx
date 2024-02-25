@@ -13,7 +13,7 @@ const Home = () => {
 
     const sortedTickets = tickets && tickets.length > 0
     ? [...tickets].sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
-    : null;
+    : [];
 
     return (
         <div>
