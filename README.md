@@ -11,7 +11,7 @@ URL del proyecto: https://ticketera-emanuelruiz.netlify.app/
 - **Axios:** Se utiliza Axios para realizar solicitudes HTTP, permitiendo una comunicación eficiente entre el frontend y el backend de la aplicación.
 
 - **Bootstrap:** La interfaz de usuario está diseñada con Bootstrap para lograr un diseño moderno y responsivo, mejorando la experiencia del usuario.
-- 
+
 - **React Router DOM:** La navegación entre páginas se gestiona con React Router DOM, proporcionando una experiencia de usuario fluida y sin recargas de página.
 
 
@@ -23,7 +23,9 @@ Asegúrate de tener las siguientes herramientas y dependencias instaladas en tu 
 - [Visual Studio Code](https://code.visualstudio.com/download) (opcional pero recomendado)
 
 ## Configuración del backend 
-Sigue los pasos para ejecutar el backend en este enlace: https://github.com/ruizemanuel/ticketera-backend/blob/emanuel-ruiz/README.md
+Sigue los pasos para ejecutar el backend en este enlace: 
+
+https://github.com/ruizemanuel/ticketera-backend/blob/emanuel-ruiz/README.md
 
 
 ## Uso del Frontend  
