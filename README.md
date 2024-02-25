@@ -39,6 +39,7 @@ https://github.com/ruizemanuel/ticketera-backend/blob/emanuel-ruiz/README.md
 `VITE_REACT_APP_API_TICKETS=http://localhost:8000/api/v1/tickets`
 
 VITE_REACT_APP_API_KEY_GIPHY=*Tu API KEY personal de Giphy (puedes generarla [aqui](https://developers.giphy.com/))*
+
 4. Abre una terminal en Visual Studio Code o utiliza tu terminal preferida.
 5. Instala las dependencias utilizando npm:
 `npm install`
